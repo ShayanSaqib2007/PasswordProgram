@@ -27,6 +27,8 @@ Module Program
             End If
             For CheckCounter = 0 To Password.Length - 1
                 If Password.Substring(CheckCounter, 1) <> " " Then
+            For CheckCounter = 0 To Password.Length - 1
+                If Password.Substring(CheckCounter, 1) <> " " Then
                     NoSpaces = True
                 End If
                 if Password.Substring(CheckCounter,1)=ucase(Password.Substring(CheckCounter,1)) Then
