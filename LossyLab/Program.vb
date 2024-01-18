@@ -11,6 +11,8 @@ Module Program
         Console.WriteLine("4. Quit.")
     End Sub
     Sub PasswordInput()
+        Dim Numbers(9) As String
+        Numbers = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"}
         Dim CorrectLength, NoSpaces, UpperCasePresent, DigitPresent As Boolean
         FileOpen(1, "Password.txt", OpenMode.Output)
         Do
@@ -23,10 +25,18 @@ Module Program
             If Password.Length >= 10 And Password.Length <= 20 Then
                 CorrectLength = True
             End If
-            For SpaceCheckCounter = 0 To Password.Length - 1
-                If Password.Substring(SpaceCheckCounter, 1) <> " " Then
+            For CheckCounter = 0 To Password.Length - 1
+                If Password.Substring(CheckCounter, 1) <> " " Then
                     NoSpaces = True
                 End If
+                if Password.Substring(CheckCounter,1)=ucase(Password.Substring(CheckCounter,1)) Then
+                    UpperCasePresent=True
+                end if
+                for DigitCounter=0 to 9
+                    if Password.Substring(CheckCounter,1)=Numbers(DigitCounter) Then
+                    DigitPresent=True
+                    end if
+                Next
             Next
         Loop Until CorrectLength And NoSpaces And UpperCasePresent And DigitPresent
         PrintLine(1, Password)
