@@ -104,9 +104,17 @@ Module Program
                         Console.WriteLine("Password has already been created, only changing and checking is allowed.")
                     End If
                 Case 2
-                    Call PasswordCheck()
+                    if PasswordCreated then
+                        Call PasswordCheck()
+                    else
+                        Console.WriteLine("Password has not been created yet.")
+                    End If
                 Case 3
-                    Call PasswordChanging()
+                    if PasswordCreated then
+                        Call PasswordChanging()
+                    else
+                        Console.WriteLine("Password has not been created yet.")
+                    End If
             End Select
         Loop Until ChoiceOption = 4
     End Sub
